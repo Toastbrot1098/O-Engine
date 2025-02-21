@@ -1,0 +1,7 @@
+Some Randome events that can happen in game, mid round.
+
+Bad ones:
+Mechanical Failure[Some important systems got destroyed, the engineer
+needs to fix it as fast as possible]
+Fire[A fire starts spreading on a random plate]
+Gas Leak[A random gas spreads across the site]

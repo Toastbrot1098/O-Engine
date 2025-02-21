@@ -1,0 +1,36 @@
+Start screen with some nice art. character customisation, join round and observer buttons. 
+---------------------------------------------------------------------------------------------------
+Specieses: Reptilian [Cold blooded,...], Human [Just a Normal Human]
+---------------------------------------------------------------------------------------------------
+Players spawn either at theyr Job site, or a start Submarine. Automatically spawn with Jobsuit and ID in IDPad
+ [A small computer displaying time of station and shift]
+----------------------------------------------------------------------------------------------------
+some parts that are dangerous: The water(Drowning), Water Pressure, Pipe leaks, Fire,Power overload
+------------------------------------------------------------------------------------------------
+Some roles, i want to add:
+
+AI [Like in SS14, needs to connect to an camera and controlls in range of it only]
+Engineer,Trained Engineer,HOE[Fixes shit]
+Atmos,Trained Atoms,HOA[Makes the shitcube be "lively"]
+Researcher,Trained Researcher,Roboticist,HOR[Does Research shit]
+Security cadett,Trained security,HOS[Make sure the crew is safe]
+Assister,Botanist[Joins for first time, Gets beaten to death with a Pen. Easy choice]
+DJ[Plays funky shit through the Stations PA system, can also make announcements]
+Medic,Trained Medic,HOM[Heals the Dead and Heals the Healed. wait what?]
+Captain,HOP,HOE,HOM,HOR,HOA,Communication Officer[Manage Crew and the Site itself]
+
+Total:22
+
+Traitor roles:
+
+Saboteur[Objective: Sabotage Site64]
+Assassin[Has a specific target to eliminate. Uses stealth to take out key crew members without being detected]
+Hacker[Objective: Hack as many security/command systems using IDPad  -> Return to his ship and upload data to syndicates]
+Malf Ai[Main Objective: Blow the shit out of the station, does not spawn with Original Laws!]
+
+Ghost roles:
+
+Pai[Personal AI. can only be connected if the device is on]
+Pets/animals[Ghosts spawn as a Mouse or rat or as a pet from an existing player]
+----------------------------------------------------------------------------------------------------------------------
+

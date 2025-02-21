@@ -1,0 +1,4 @@
+1. Edit the Server script to Change the IP.
+2. Use any IP you want.
+3.connect through: http://localhost:IP
+4. Change "IP" to the IP

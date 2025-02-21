@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>O² Game</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #222;
+            color: #fff;
+        }
+        #mainScreen {
+            text-align: center;
+        }
+        #sidebar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainScreen">
+        <h1>Welcome to O² Game</h1>
+        <img id="backgroundImage" src="" alt="Background" style="max-width: 100%; max-height: 100%;">
+        <button id="startButton">Start Game</button>
+        <button id="observerButton">Observer Mode</button>
+        <button id="settingsButton">Settings</button>
+        <button id="customizeButton">Customize Character</button> <!-- New button -->
+    </div>
+    <div id="sidebar">
+        <p>Server Version: 1.0.0</p>
+        <p>Status: <span id="status">Connecting...</span></p>
+        <p>Players: <span id="playerCount">0</span></p>
+        <p>Timer: <span id="timer">300</span> seconds</p>
+    </div>
+    <script>
+        const ws = new WebSocket('ws://' + location.host);
+        let timer = 300;
+
+        ws.onopen = () => {
+            document.getElementById('status').textContent = 'Connected';
+            console.log("WebSocket connection opened.");
+        };
+
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            console.log("Message from server:", data);
+
+            if (data.type === 'playerCount') {
+                document.getElementById('playerCount').textContent = data.count;
+            } else if (data.type === 'start') {
+                document.getElementById('backgroundImage').src = data.image;
+                document.getElementById('status').textContent = 'Game started';
+            }
+        };
+
+        ws.onclose = () => {
+            document.getElementById('status').textContent = 'Disconnected';
+            console.log("WebSocket connection closed.");
+        };
+
+        ws.onerror = (error) => {
+            console.error("WebSocket error:", error);
+        };
+
+        document.getElementById('startButton').addEventListener('click', () => {
+            ws.send(JSON.stringify({ type: 'startGame' }));
+        });
+
+        document.getElementById('observerButton').addEventListener('click', () => {
+            ws.send(JSON.stringify({ type: 'observerMode' }));
+        });
+
+        document.getElementById('settingsButton').addEventListener('click', () => {
+            ws.send(JSON.stringify({ type: 'settings' }));
+        });
+
+        document.getElementById('customizeButton').addEventListener('click', () => {
+            window.location.href = '/customization';
+        }); // New event listener for customization button
+
+        // Timer
+        setInterval(() => {
+            if (timer > 0) {
+                timer--;
+                document.getElementById('timer').textContent = timer;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

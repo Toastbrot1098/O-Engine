@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character Customization</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #222;
+            color: #fff;
+        }
+        #customizationForm {
+            text-align: center;
+        }
+        #sidebar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #characterPreview {
+            border: 1px solid #fff;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="customizationForm">
+        <h1>Character Customization</h1>
+        <form id="customForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="skinColor">Skin Color:</label>
+            <input type="color" id="skinColor" name="skinColor" value="#ffffff"><br><br>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="0" max="100"><br><br>
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+                <option value="engineer">Engineer</option>
+                <option value="medic">Medic</option>
+                <option value="security">Security</option>
+                <option value="dj">DJ</option>
+            </select><br><br>
+            <button type="button" onclick="submitCustomization()">Submit</button>
+        </form>
+        <div id="characterPreview">
+            <h2>Character Preview</h2>
+            <div id="preview" style="height: 100px; width: 100px; background-color: #ffffff;"></div>
+            <p id="previewName"></p>
+            <p id="previewAge"></p>
+            <p id="previewRole"></p>
+        </div>
+    </div>
+    <script>
+        function submitCustomization() {
+            const name = document.getElementById('name').value;
+            const skinColor = document.getElementById('skinColor').value;
+            const age = document.getElementById('age').value;
+            const role = document.getElementById('role').value;
+
+            const data = {
+                name: name,
+                skinColor: skinColor,
+                age: age,
+                role: role
+            };
+
+            fetch('/customize', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                window.location.href = '/';
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Update character preview
+        document.getElementById('name').addEventListener('input', updatePreview);
+        document.getElementById('skinColor').addEventListener('input', updatePreview);
+        document.getElementById('age').addEventListener('input', updatePreview);
+        document.getElementById('role').addEventListener('change', updatePreview);
+
+        function updatePreview() {
+            document.getElementById('preview').style.backgroundColor = document.getElementById('skinColor').value;
+            document.getElementById('previewName').textContent = "Name: " + document.getElementById('name').value;
+            document.getElementById('previewAge').textContent = "Age: " + document.getElementById('age').value;
+            document.getElementById('previewRole').textContent = "Role: " + document.getElementById('role').value;
+        }
+    </script>
+</body>
+</html>

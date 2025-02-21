@@ -1,0 +1,12 @@
+Heres a List of all current parts needing/having a texture.
+
+1.Water [???]
+2.Rods [Item]
+3.Structural Rodding [Plate(Neded first to make a floor)]
+4.Structural Plating [Plate]
+5.Station Flooring [Item and Plate]
+6.Power cables (LV,MV,HV) [Item and placed]
+7.PSU (Power saving unit) [Structure]
+8.Walls [Structure]
+9.Airlock [Structure]
+10. Ground [???]
